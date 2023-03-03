@@ -52,7 +52,6 @@ router.post('/registro', async (req, res) => {
 })
 
 router.post('/login', async (req, res) => {
-
     const { email, password } = req.body
     const usuario = await usersModel.find({ email, password })
     if (usuario.length !== 0) {
@@ -62,14 +61,16 @@ router.post('/login', async (req, res) => {
         req.session.logged = true
         if (email === 'adminCoder@coder.com' && password === 'adminCod') {
             req.session.isAdmin = true
+            res.redirect('/views/admin')
         } else {
             req.session.isAdmin = false
+            res.redirect('/views/perfil')
         }
-        res.redirect('/views/perfil')
     } else {
         res.redirect('/views/errorLogin')
     }
 })
+
 
 router.get('/logout', (req, res) => {
     req.session.destroy((error) => {
@@ -77,4 +78,9 @@ router.get('/logout', (req, res) => {
         else res.redirect('/views/login')
     })
 })
+
+
+
 export default router
+
+

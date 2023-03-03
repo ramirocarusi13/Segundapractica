@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { auth, isLogged } from "../middlewares/auth.middleware.js";
+import { auth, isAdmin, isLogged } from "../middlewares/auth.middleware.js";
 
 const router = Router()
 
@@ -13,6 +13,9 @@ router.get('/errorRegistro', (req, res) => {
 
 router.get('/login', isLogged, (req, res) => {
     res.render('login')
+})
+router.get('/admin',  (req, res) => {
+    res.render('admin', { email: req.session.email })
 })
 
 router.get('/perfil', auth, (req, res) => {
