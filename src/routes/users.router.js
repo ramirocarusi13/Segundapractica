@@ -64,7 +64,7 @@ router.post('/login', async (req, res) => {
             res.redirect('/views/admin')
         } else {
             req.session.isAdmin = false
-            res.redirect('/views/perfil')
+            res.redirect('/views/products')
         }
     } else {
         res.redirect('/views/errorLogin')

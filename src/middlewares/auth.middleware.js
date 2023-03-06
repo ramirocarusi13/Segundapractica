@@ -13,11 +13,3 @@ export function isLogged(req, res, next) {
         next()
     }
 }
-
-export function isAdmin(req, res, next) {
-    if (req.session.isAdmin) {
-        res.redirect('/views/admin')
-    } else {
-        next()
-    }
-}

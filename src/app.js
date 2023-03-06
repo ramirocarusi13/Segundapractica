@@ -22,9 +22,12 @@ import mongoStore from 'connect-mongo'
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(express.static(__dirname+'/public'))
 app.use(cookieParser())
 
 // handlebars
+
+
 app.engine('handlebars', handlebars.engine())
 app.set('views', __dirname + '/views')
 app.set('view engine', 'handlebars')
@@ -57,6 +60,8 @@ app.use(
 )
 
 // routes
+app.use('/carts', cartsRouter)
+app.use('/products', productsRouter)
 app.use('/views', viewsRouter)
 app.use('/users', usersRouter)
 app.get('/', (req, res) => {

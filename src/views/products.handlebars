@@ -1,0 +1,15 @@
+<h2>Holaaa {{email}}</h2>
+<button onclick="location.href='/users/logout'">Log Out</button>
+<div class="card">
+    {{#each products.docs}}
+    <article class="card__product">
+        <img class="card__product__image" src="{{this.image}}" alt="{{this.description}}">
+        <div class="card__product__details">
+            <h3 class="card__product__title">{{this.title}}</h3>
+            <p class="card__product__price">${{this.price}}</p>
+            <p class="card__product__brand">Marca: {{this.brand}}</p>
+            <button class="card__product__btn" id="{{this._id}}">Agregar a carrito</button>
+        </div>
+    </article>
+    {{/each}}
+</div>
